@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Head from "next/head"; // Importar o componente Head
+import Script from "next/script"; // Importar o componente Script
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,23 +18,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        {/* Adiciona a tag do Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-LWVS0DCKXX"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-LWVS0DCKXX');
-            `,
-          }}
-        />
-      </Head>
+       <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-LWVS0DCKXX"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LWVS0DCKXX');
+        `}
+      </Script>
       <body className={inter.className}>{children}</body>
     </html>
   );
