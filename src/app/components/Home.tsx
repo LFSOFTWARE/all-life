@@ -18,11 +18,6 @@ export default function HomeContent() {
   
   ]);
 
-//   function generateRandomColor() {
-//     // Gera um valor hexadecimal aleatório entre 0 e 255
-//     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-//     return `#${randomColor.padStart(6, '0')}`;
-// }
 function getRandomColor() {
   const colors = [
     '#5F9EA0', '#E9967A', '#008080', '#FFFFE0', '#FF4500', 
